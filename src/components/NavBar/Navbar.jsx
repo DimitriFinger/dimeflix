@@ -1,7 +1,10 @@
+import { NavDiv } from "./styled"
 
 const Navbar = () => {
     return (
-        <div>Navbar</div>
+        <NavDiv>
+            teste
+        </NavDiv>
     )
 }
 
