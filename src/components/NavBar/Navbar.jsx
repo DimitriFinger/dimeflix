@@ -1,9 +1,9 @@
-import { NavDiv } from "./styled"
+import { NavDiv, Logo } from "./styled"
 
 const Navbar = () => {
     return (
         <NavDiv>
-            teste
+            <Logo />
         </NavDiv>
     )
 }
