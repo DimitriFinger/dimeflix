@@ -24,13 +24,13 @@ export const Nav = styled.nav`
   justify-content: flex-start;
 `;
 
-export const NavMenu = styled.ul`
+export const NavMenu = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const MenuItem = styled.li`
-  display: inline;
-  margin-left: 30px;
+export const MenuItem = styled(Link)`  
   color: white;
+  margin-left: 18px;
+  text-decoration: none;
 `;

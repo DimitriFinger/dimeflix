@@ -17,10 +17,12 @@ const NavBar = () => {
 
                 <Logo>dimitri.finger</Logo>
                 <NavMenu>
-                    {/* <MenuItem><Link to="#">Teste</Link></MenuItem> */}
-                    <MenuItem><a href="#">Teste</a></MenuItem>
-                    <MenuItem><a href="#">Teste</a></MenuItem>
-                    <MenuItem><a href="#">Teste</a></MenuItem>
+                    <MenuItem to='/home'>Início</MenuItem>
+                    <MenuItem to='/series'>Series</MenuItem>
+                    <MenuItem to='/movies'>Filmes</MenuItem>
+                    <MenuItem to='/latest'>Bombando</MenuItem>
+                    <MenuItem to='/my-list'>Minha lista</MenuItem>
+
                 </NavMenu>
             </Nav>
         </>
