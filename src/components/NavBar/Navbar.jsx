@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
 import {
     Nav,
-    NavLink,
-    Bars,
     NavMenu,
-    NavBtn,
-    NavBtnLink,
-    Logo
+    Logo,
+    MenuItem
 } from './styled';
+
+import { Link } from 'react-router-dom'
+
 const NavBar = () => {
 
 
@@ -17,19 +16,12 @@ const NavBar = () => {
             <Nav>
 
                 <Logo>dimitri.finger</Logo>
-
-                <Bars />
-                <NavMenu >
-                    <NavLink to='/about' >
-                        About
-                    </NavLink>
-                    <NavLink to='/contact' >
-                        Contact Us
-                    </NavLink>
+                <NavMenu>
+                    {/* <MenuItem><Link to="#">Teste</Link></MenuItem> */}
+                    <MenuItem><a href="#">Teste</a></MenuItem>
+                    <MenuItem><a href="#">Teste</a></MenuItem>
+                    <MenuItem><a href="#">Teste</a></MenuItem>
                 </NavMenu>
-                <NavBtn>
-                    <NavBtnLink to='/login'>Sign In</NavBtnLink>
-                </NavBtn>
             </Nav>
         </>
     )
