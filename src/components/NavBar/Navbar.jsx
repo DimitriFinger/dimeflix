@@ -15,8 +15,8 @@ const NavBar = () => {
         <>
             <Nav>
 
-                <Logo>dimitri.finger</Logo>
                 <NavMenu>
+                    <Logo />
                     <MenuItem to='/home'>Início</MenuItem>
                     <MenuItem to='/series'>Series</MenuItem>
                     <MenuItem to='/movies'>Filmes</MenuItem>
