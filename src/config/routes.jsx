@@ -13,7 +13,7 @@ const AppRoutes = () => {
         <Router>
             <NavBar />
             <Routes>
-                <Route path='/home' exact element={<HomePage />} />
+                <Route path='/' exact element={<HomePage />} />
                 <Route path='/series' exact element={<SeriesPage />} />
             </Routes>
         </Router>

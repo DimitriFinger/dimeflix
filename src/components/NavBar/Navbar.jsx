@@ -2,10 +2,17 @@ import {
     Nav,
     NavMenu,
     Logo,
-    MenuItem
+    MenuItem,
+    ProfileIcon,
+    SearchIcon,
+    NotificionIcon
 } from './styled';
 
-import { Link } from 'react-router-dom'
+
+import searchIcon from '../../assets/search-icon.svg'
+import profileIcon from '../../assets/profile-icon.png'
+import notificationIcon from '../../assets/notification-icon.svg'
+
 
 const NavBar = () => {
 
@@ -22,6 +29,10 @@ const NavBar = () => {
                     <MenuItem to='/movies'>Filmes</MenuItem>
                     <MenuItem to='/latest'>Bombando</MenuItem>
                     <MenuItem to='/my-list'>Minha lista</MenuItem>
+                    <SearchIcon src={searchIcon} />
+                    <MenuItem to='/my-list'>Infantil</MenuItem>
+                    <NotificionIcon src={notificationIcon} />
+                    <ProfileIcon src={profileIcon} />
 
                 </NavMenu>
             </Nav>

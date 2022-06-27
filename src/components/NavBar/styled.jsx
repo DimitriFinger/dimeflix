@@ -11,6 +11,7 @@ export const Logo = styled.div`
 export const Nav = styled.nav`
   background: #141414;
   height: 68px;
+  width: 100%;
   display: flex;
   justify-content: center;
   z-index: 100;
@@ -23,7 +24,22 @@ export const NavMenu = styled.div`
 `;
 
 export const MenuItem = styled(Link)`  
-  color: white;
+  color: #E5E5E5;
   margin-left: 18px;
   text-decoration: none;
+  font-size: 1rem;
+  font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+`;
+
+export const ProfileIcon = styled.img`
+    cursor: pointer;
+
+`;
+
+export const SearchIcon = styled.img`
+  cursor: pointer;
+`;
+
+export const NotificionIcon = styled.img`
+  cursor: pointer;
 `;
