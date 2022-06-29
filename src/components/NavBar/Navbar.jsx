@@ -5,7 +5,9 @@ import {
     MenuItem,
     ProfileIcon,
     SearchIcon,
-    NotificionIcon
+    NotificionIcon,
+    LeftMenuContainer,
+    RightMenuContainer
 } from './styled';
 
 
@@ -22,17 +24,23 @@ const NavBar = () => {
         <>
             <Nav>
 
+                <Logo />
                 <NavMenu>
-                    <Logo />
-                    <MenuItem to='/home'>Início</MenuItem>
-                    <MenuItem to='/series'>Series</MenuItem>
-                    <MenuItem to='/movies'>Filmes</MenuItem>
-                    <MenuItem to='/latest'>Bombando</MenuItem>
-                    <MenuItem to='/my-list'>Minha lista</MenuItem>
-                    <SearchIcon src={searchIcon} />
-                    <MenuItem to='/my-list'>Infantil</MenuItem>
-                    <NotificionIcon src={notificationIcon} />
-                    <ProfileIcon src={profileIcon} />
+
+                    <LeftMenuContainer>
+                        <MenuItem to='/home'>Início</MenuItem>
+                        <MenuItem to='/series'>Series</MenuItem>
+                        <MenuItem to='/movies'>Filmes</MenuItem>
+                        <MenuItem to='/latest'>Bombando</MenuItem>
+                        <MenuItem to='/my-list'>Minha lista</MenuItem>
+                    </LeftMenuContainer>
+
+                    <RightMenuContainer>
+                        <SearchIcon src={searchIcon} />
+                        <MenuItem to='/my-list'>Infantil</MenuItem>
+                        <NotificionIcon src={notificationIcon} />
+                        <ProfileIcon src={profileIcon} />
+                    </RightMenuContainer>
 
                 </NavMenu>
             </Nav>
