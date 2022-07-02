@@ -2,11 +2,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 
-export const Logo = styled.div`
-    background-color: red;
-    width: 105px;
-    height: 31px;
-    margin-left: 57px;
+export const Logo = styled.h1`
+    font-family: 'Netflix Logo';
+    color: red;
 `;
 
 export const Nav = styled.nav`

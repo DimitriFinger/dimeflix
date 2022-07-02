@@ -24,7 +24,9 @@ const NavBar = () => {
         <>
             <Nav>
 
-                <Logo />
+                <Logo>
+                    DIMEFLIX
+                </Logo>
                 <NavMenu>
 
                     <LeftMenuContainer>

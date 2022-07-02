@@ -14,6 +14,11 @@ body {
   padding: 0;
 }
 
+@font-face{
+  font-family: 'Nextflix Logo';
+  src: url('./assets/fonts/logo/BebasNeue.otf') format('opentype');
+}
+
 @font-face {
   font-family: 'Netflix Sans';
   font-weight: 100;
