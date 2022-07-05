@@ -1,6 +1,6 @@
 import userService from "../services/UserServices"
 
-class UserController {
+class MovieController {
     async createUser(req, res) {
         try {
             const user = await userService.createUser(req.body);
@@ -54,5 +54,5 @@ class UserController {
 }
 
 
-export default new UserController();
+export default new MovieController();
 
