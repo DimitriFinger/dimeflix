@@ -1,6 +1,6 @@
-import User from '../models/User'
+import Movie from '../models/Movie'
 
-class MovieServices {
+class MovieService {
     async getAll(req, res) {
         try {
             const getUser = await User.find();
@@ -107,4 +107,4 @@ class MovieServices {
 
 }
 
-export default new MovieServices();
+export default new MovieService();

@@ -1,6 +1,6 @@
 import User from '../models/User'
 
-class UserServices {
+class UserService {
     async getAll(req, res) {
         try {
             const getUser = await User.find();
@@ -107,4 +107,4 @@ class UserServices {
 
 }
 
-export default new UserServices();
+export default new UserService();
