@@ -3,8 +3,8 @@ import Movie from '../models/Movie'
 class MovieService {
     async getAll(req, res) {
         try {
-            const getUser = await User.find();
-            return res.json(getUser);
+            const getMovies = await Movie.find();
+            return res.json(getMovies);
 
         } catch (err) {
             console.error(err);
@@ -18,13 +18,13 @@ class MovieService {
     async getId(req, res) {
         try {
             const { id } = req.params;
-            const user = await User.findById(id);
+            const movie = await Movie.findById(id);
 
-            if (!user) {
+            if (!movie) {
                 return res.status(404).json();
             }
 
-            return res.json(user);
+            return res.json(movie);
         } catch (err) {
             console.error(err);
             return res
@@ -37,15 +37,14 @@ class MovieService {
     async update(req, res) {
         try {
             const { id } = req.params;
-            const { name, email, password } = req.body;
-            const user = await User.findById(id);
+            const { name, description, releaseYear, duration } = req.body;
+            const movie = await Movie.findById(id);
 
-            if (!user) {
+            if (!movie) {
                 return res.status(404).json();
             }
 
-            const encryptedPassword = await createPasswordHash(password);
-            await user.updateOne({ name, email, password: encryptedPassword });
+            await movie.updateOne({ name, description, releaseYear, duration });
 
             return res.status(200).json();
 
@@ -61,13 +60,13 @@ class MovieService {
     async delete(req, res) {
         try {
             const { id } = req.params;
-            const user = await User.findById(id);
+            const movie = await Movie.findById(id);
 
-            if (!user) {
+            if (!movie) {
                 return res.status(404).json();
             }
 
-            await user.deleteOne();
+            await movie.deleteOne();
             return res.status(200).json();
 
         } catch (err) {
@@ -79,23 +78,24 @@ class MovieService {
 
     async create(req, res) {
         try {
-            const { name, email, password } = req.body;
-            const user = await User.findOne({ email });
+            const { name, description, releaseYear, duration } = req.body;
+            const movie = await movie.findOne({ name });
 
-            if (user) {
+            if (movie) {
                 return res
                     .status(422)
-                    .json({ message: `User ${email} already exists.` });
+                    .json({ message: `Movie ${name} already exists.` });
             }
-            const newUser = await User.create({
+            const newMovie = await Movie.create({
                 name,
-                email,
-                password
+                description,
+                releaseYear,
+                duration
             });
 
             return res
                 .status(201)
-                .json(newUser);
+                .json(newMovie);
 
         } catch (err) {
             return res
