@@ -1,5 +1,6 @@
 import userService from "../services/UserService"
 
+
 class UserController {
     async createUser(req, res) {
         try {
@@ -54,5 +55,4 @@ class UserController {
 }
 
 
-export default new UserController();
-
+module.exports = new UserController();

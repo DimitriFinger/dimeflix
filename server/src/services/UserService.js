@@ -1,10 +1,10 @@
 import User from '../models/User'
 
 class UserService {
-    async getAll(req, res) {
+    async getAllUsers(req, res) {
         try {
             const getUser = await User.find();
-            return res.json(getUser);
+            return getUser;
 
         } catch (err) {
             console.error(err);
@@ -15,7 +15,7 @@ class UserService {
 
     }
 
-    async getId(req, res) {
+    async getUser(req, res) {
         try {
             const { id } = req.params;
             const user = await User.findById(id);
@@ -24,7 +24,7 @@ class UserService {
                 return res.status(404).json();
             }
 
-            return res.json(user);
+            return user;
         } catch (err) {
             console.error(err);
             return res
@@ -34,7 +34,7 @@ class UserService {
     }
 
 
-    async update(req, res) {
+    async updateUser(req, res) {
         try {
             const { id } = req.params;
             const { name, email, password } = req.body;
@@ -58,7 +58,7 @@ class UserService {
     }
 
 
-    async delete(req, res) {
+    async deleteUser(req, res) {
         try {
             const { id } = req.params;
             const user = await User.findById(id);
@@ -77,7 +77,7 @@ class UserService {
         }
     }
 
-    async create(req, res) {
+    async createUser(req, res) {
         try {
             const { name, email, password } = req.body;
             const user = await User.findOne({ email });
@@ -93,9 +93,7 @@ class UserService {
                 password
             });
 
-            return res
-                .status(201)
-                .json(newUser);
+            return newUser
 
         } catch (err) {
             return res

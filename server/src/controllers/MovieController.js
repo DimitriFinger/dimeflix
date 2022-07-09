@@ -1,10 +1,10 @@
-import userService from "../services/UserService"
+import movieService from "../services/MovieService"
 
 class MovieController {
-    async createUser(req, res) {
+    async createMovie(req, res) {
         try {
-            const user = await userService.createUser(req.body);
-            return res.status(201).json(user);
+            const movie = await userService.createUser(req.body);
+            return res.status(201).json(movie);
         } catch (err) {
             console.error(err);
             return res.status(500).json({ error: 'Internal service error!' });
