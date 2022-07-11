@@ -8,84 +8,75 @@ class UserService {
 
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." };
         }
 
     }
 
-    async getUser(req, res) {
+    async getUser(userData) {
         try {
-            const { id } = req.params;
+            const { id } = userData;
             const user = await User.findById(id);
 
             if (!user) {
-                return res.status(404).json();
+                return { message: 'User not found.' }
             }
 
             return user;
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Invalid ID value." }
         }
     }
 
 
-    async updateUser(req, res) {
+    async updateUser(userId, userData) {
         try {
-            const { id } = req.params;
-            const { name, email, password } = req.body;
+            const { id } = userId;
+            const { name, email, password } = userData;
+            console.log(id, name, email, password);
             const user = await User.findById(id);
 
             if (!user) {
-                return res.status(404).json();
+                return { message: 'User not found.' }
             }
 
-            const encryptedPassword = await createPasswordHash(password);
-            await user.updateOne({ name, email, password: encryptedPassword });
+            await user.updateOne({ name, email, password });
 
-            return res.status(200).json();
+            return { message: 'User updated.' }
 
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." };
         }
     }
 
 
-    async deleteUser(req, res) {
+    async deleteUser(userData) {
         try {
-            const { id } = req.params;
+            const { id } = userData;
             const user = await User.findById(id);
 
             if (!user) {
-                return res.status(404).json();
+                return { message: 'User not found.' }
             }
 
             await user.deleteOne();
-            return res.status(200).json();
+            return { message: 'User deleted.' }
 
         } catch (err) {
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            console.error(err);
+            return { error: "Internal server error." }
         }
     }
 
-    async createUser(req, res) {
+    async createUser(userData) {
         try {
-            const { name, email, password } = req.body;
+            const { name, email, password } = userData;
             const user = await User.findOne({ email });
 
             if (user) {
-                return res
-                    .status(422)
-                    .json({ message: `User ${email} already exists.` });
+                return { message: `User ${email} already exists.` };
             }
             const newUser = await User.create({
                 name,
@@ -96,9 +87,8 @@ class UserService {
             return newUser
 
         } catch (err) {
-            return res
-                .status(500)
-                .json('There was a problem registering the user.');
+            console.error(err);
+            return { error: "Internal server error." }
         }
 
     }
