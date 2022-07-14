@@ -1,90 +1,79 @@
 import Movie from '../models/Movie'
 
 class MovieService {
-    async getAll(req, res) {
+    async getAllMovies() {
         try {
             const getMovies = await Movie.find();
-            return res.json(getMovies);
+            return getMovies
 
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." }
         }
 
     }
 
-    async getId(req, res) {
+    async getMovie(movieId) {
         try {
-            const { id } = req.params;
+            const { id } = movieId;
             const movie = await Movie.findById(id);
 
             if (!movie) {
-                return res.status(404).json();
+                return { message: 'Movie not found.' }
             }
 
-            return res.json(movie);
+            return movie;
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." };
         }
     }
 
 
-    async update(req, res) {
+    async updateMovie(movieId, movieData) {
         try {
-            const { id } = req.params;
-            const { name, description, releaseYear, duration } = req.body;
+            const { id } = movieId;
+            const { name, description, releaseYear, duration } = movieData;
             const movie = await Movie.findById(id);
 
             if (!movie) {
-                return res.status(404).json();
+                return { message: 'Movie not found.' }
             }
 
             await movie.updateOne({ name, description, releaseYear, duration });
 
-            return res.status(200).json();
+            return { message: 'Movie updated.' }
 
         } catch (err) {
             console.error(err);
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." };
         }
     }
 
 
-    async delete(req, res) {
+    async deleteMovie(movieId) {
         try {
-            const { id } = req.params;
+            const { id } = movieId;
             const movie = await Movie.findById(id);
 
             if (!movie) {
-                return res.status(404).json();
+                return { message: 'Movie not found.' }
             }
 
             await movie.deleteOne();
-            return res.status(200).json();
+            return { message: 'Movie deleted.' }
 
         } catch (err) {
-            return res
-                .status(500)
-                .json({ error: "Internal server error." });
+            return { error: "Internal server error." };
         }
     }
 
-    async create(req, res) {
+    async createMovie(movieData) {
         try {
-            const { name, description, releaseYear, duration } = req.body;
-            const movie = await movie.findOne({ name });
-
+            const { name, description, releaseYear, duration } = movieData;
+            const movie = await Movie.findOne({ name });
             if (movie) {
-                return res
-                    .status(422)
-                    .json({ message: `Movie ${name} already exists.` });
+                return { message: `Movie ${name} already exists.` }
             }
             const newMovie = await Movie.create({
                 name,
@@ -93,14 +82,11 @@ class MovieService {
                 duration
             });
 
-            return res
-                .status(201)
-                .json(newMovie);
+            return newMovie
 
         } catch (err) {
-            return res
-                .status(500)
-                .json('There was a problem registering the user.');
+            console.log(err)
+            return { error: 'There was a problem registering the user.' }
         }
 
     }
