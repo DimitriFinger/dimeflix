@@ -1,5 +1,6 @@
 import { Router } from "express";
 import UserController from "./controllers/UserController";
+import MovieController from "./controllers/MovieController";
 
 const routes = new Router();
 
@@ -9,11 +10,11 @@ routes.get('/users/:id', UserController.getUser);
 routes.put('/users/:id', UserController.updateUser)
 routes.delete('/users/:id', UserController.deleteUser);
 
-routes.get('/movies', UserController.getAllUsers);
-routes.post('/movies', UserController.createUser);
-routes.get('/movies/:id', UserController.getUser);
-routes.put('/movies/:id', UserController.updateUser)
-routes.delete('/movies/:id', UserController.deleteUser);
+routes.get('/movies', MovieController.getAllMovies);
+routes.post('/movies', MovieController.createMovie);
+routes.get('/movies/:id', MovieController.getMovie);
+routes.put('/movies/:id', MovieController.updateMovie)
+routes.delete('/movies/:id', MovieController.deleteMovie);
 
 routes.get('/series', UserController.getAllUsers);
 routes.post('/series', UserController.createUser);
