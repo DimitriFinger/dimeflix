@@ -1,6 +1,7 @@
 import { Router } from "express";
 import UserController from "./controllers/UserController";
 import MovieController from "./controllers/MovieController";
+import SeriesController from "./controllers/SeriesController";
 
 const routes = new Router();
 
@@ -16,11 +17,11 @@ routes.get('/movies/:id', MovieController.getMovie);
 routes.put('/movies/:id', MovieController.updateMovie)
 routes.delete('/movies/:id', MovieController.deleteMovie);
 
-routes.get('/series', UserController.getAllUsers);
-routes.post('/series', UserController.createUser);
-routes.get('/series/:id', UserController.getUser);
-routes.put('/series/:id', UserController.updateUser)
-routes.delete('/series/:id', UserController.deleteUser);
+routes.get('/series', SeriesController.getAllSeries);
+routes.post('/series', SeriesController.createSerie);
+routes.get('/series/:id', SeriesController.getSerie);
+routes.put('/series/:id', SeriesController.updateSerie)
+routes.delete('/series/:id', SeriesController.deleteSerie);
 
 
 export default routes;
