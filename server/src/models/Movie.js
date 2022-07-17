@@ -12,6 +12,10 @@ const MovieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    gender: {
+        type: String,
+        required: true
+    },
     releaseYear: {
         type: String,
         required: true

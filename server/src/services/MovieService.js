@@ -33,14 +33,14 @@ class MovieService {
     async updateMovie(movieId, movieData) {
         try {
             const { id } = movieId;
-            const { name, description, releaseYear, duration } = movieData;
+            const { name, description, gender, releaseYear, duration } = movieData;
             const movie = await Movie.findById(id);
 
             if (!movie) {
                 return { message: 'Movie not found.' }
             }
 
-            await movie.updateOne({ name, description, releaseYear, duration });
+            await movie.updateOne({ name, description, releaseYear, gender, duration });
 
             return { message: 'Movie updated.' }
 
@@ -70,7 +70,7 @@ class MovieService {
 
     async createMovie(movieData) {
         try {
-            const { name, description, releaseYear, duration } = movieData;
+            const { name, description, gender, releaseYear, duration } = movieData;
             const movie = await Movie.findOne({ name });
             if (movie) {
                 return { message: `Movie ${name} already exists.` }
@@ -78,6 +78,7 @@ class MovieService {
             const newMovie = await Movie.create({
                 name,
                 description,
+                gender,
                 releaseYear,
                 duration
             });
